@@ -40,7 +40,7 @@ def shift_byte(number):
 number = 0
 def display_number(tName):
  while True:
-  st = '%0*d' % (8, number)
+  st = '%0*d' % (8, str(int(number)))
   for x in range(0, 8):
    GPIO.output(LOCK,GPIO.LOW)
    shift_byte(1 << 7 >> x)
