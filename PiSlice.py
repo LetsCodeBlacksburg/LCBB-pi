@@ -40,7 +40,7 @@ def shift_byte(number):
 number = 0
 def display_number(tName):
  while True:
-  st = '%0*d' % (8, str(int(number)))
+  st = '%0*d' % (8, number)
   for x in range(0, 8):
    GPIO.output(LOCK,GPIO.LOW)
    shift_byte(1 << 7 >> x)
@@ -58,12 +58,13 @@ def init():
 def init_temp():
  os.system('modprobe w1-gpio')
  os.system('modprobe w1-therm')
-
- base_dir = '/sys/bus/w1/devices/'
+ ## Bad path for some reason
+ #base_dir = '/sys/bus/w1/devices/'
+ ## Hardcode hack for correct path (for now)
+ base_dir = '/sys/devices/w1_bus_master1/'
  device_folder = glob.glob(base_dir + '28*')[0]
+ global device_file
  device_file = device_folder + '/w1_slave'
-
-
 
 def read_temp_raw():
     f = open(device_file, 'r')
