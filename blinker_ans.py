@@ -4,11 +4,11 @@
  import time  
 #initialize GPIO to use Raspberry Pi pinouts 
 GPIO.setmode(GPIO.BOARD)
- #set pin 7 to output mode
+ #set pin 15 to output mode and 16 to input
  GPIO.setup(15, GPIO.OUT)
-GPIO.setup(14, GPIO.IN)
+GPIO.setup(16, GPIO.IN)
 while True:
-    button = GPIO.input(14)
+    button = GPIO.input(16)
     while button == True:
         print 'waiting'
      #turn on LED and wait 1 second 
