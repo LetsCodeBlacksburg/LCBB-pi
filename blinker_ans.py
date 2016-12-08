@@ -11,9 +11,11 @@ while True:
     button = GPIO.input(16)
     while button == True:
         print 'waiting'
+        button = GPIO.input(16)
      #turn on LED and wait 1 second 
     GPIO.output(15,True)
     time.sleep(1)
     #turn off LED and wait 1 second 
     GPIO.output(15,False)
+    print 'blinking'
     time.sleep(1)
